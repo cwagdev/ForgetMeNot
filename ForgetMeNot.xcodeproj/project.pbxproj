@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8391CE4E189A4D4F0072A2D3 /* RWTItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8391CE4D189A4D4F0072A2D3 /* RWTItemCell.m */; };
 		83EC54AF1898DD3600EA1765 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC54AE1898DD3600EA1765 /* Foundation.framework */; };
 		83EC54B11898DD3600EA1765 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC54B01898DD3600EA1765 /* CoreGraphics.framework */; };
 		83EC54B31898DD3600EA1765 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC54B21898DD3600EA1765 /* UIKit.framework */; };
@@ -14,13 +15,15 @@
 		83EC54BB1898DD3600EA1765 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC54BA1898DD3600EA1765 /* main.m */; };
 		83EC54BF1898DD3600EA1765 /* RWTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC54BE1898DD3600EA1765 /* RWTAppDelegate.m */; };
 		83EC54C21898DD3600EA1765 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83EC54C01898DD3600EA1765 /* Main.storyboard */; };
-		83EC54C51898DD3600EA1765 /* RWTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC54C41898DD3600EA1765 /* RWTViewController.m */; };
+		83EC54C51898DD3600EA1765 /* RWTItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC54C41898DD3600EA1765 /* RWTItemsViewController.m */; };
 		83EC54C71898DD3600EA1765 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83EC54C61898DD3600EA1765 /* Images.xcassets */; };
 		83EC54CE1898DD3600EA1765 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC54CD1898DD3600EA1765 /* XCTest.framework */; };
 		83EC54CF1898DD3600EA1765 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC54AE1898DD3600EA1765 /* Foundation.framework */; };
 		83EC54D01898DD3600EA1765 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EC54B21898DD3600EA1765 /* UIKit.framework */; };
 		83EC54D81898DD3600EA1765 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83EC54D61898DD3600EA1765 /* InfoPlist.strings */; };
 		83EC54DA1898DD3600EA1765 /* ForgetMeNotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC54D91898DD3600EA1765 /* ForgetMeNotTests.m */; };
+		83EC54E81898E05E00EA1765 /* RWTAddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC54E71898E05E00EA1765 /* RWTAddItemViewController.m */; };
+		83EC54EB1898E13900EA1765 /* RWTItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC54EA1898E13900EA1765 /* RWTItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8391CE4C189A4D4F0072A2D3 /* RWTItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTItemCell.h; sourceTree = "<group>"; };
+		8391CE4D189A4D4F0072A2D3 /* RWTItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTItemCell.m; sourceTree = "<group>"; };
 		83EC54AB1898DD3600EA1765 /* ForgetMeNot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForgetMeNot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EC54AE1898DD3600EA1765 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		83EC54B01898DD3600EA1765 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -45,14 +50,18 @@
 		83EC54BD1898DD3600EA1765 /* RWTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RWTAppDelegate.h; sourceTree = "<group>"; };
 		83EC54BE1898DD3600EA1765 /* RWTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RWTAppDelegate.m; sourceTree = "<group>"; };
 		83EC54C11898DD3600EA1765 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		83EC54C31898DD3600EA1765 /* RWTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RWTViewController.h; sourceTree = "<group>"; };
-		83EC54C41898DD3600EA1765 /* RWTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RWTViewController.m; sourceTree = "<group>"; };
+		83EC54C31898DD3600EA1765 /* RWTItemsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RWTItemsViewController.h; sourceTree = "<group>"; };
+		83EC54C41898DD3600EA1765 /* RWTItemsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RWTItemsViewController.m; sourceTree = "<group>"; };
 		83EC54C61898DD3600EA1765 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		83EC54CC1898DD3600EA1765 /* ForgetMeNotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForgetMeNotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		83EC54CD1898DD3600EA1765 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		83EC54D51898DD3600EA1765 /* ForgetMeNotTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ForgetMeNotTests-Info.plist"; sourceTree = "<group>"; };
 		83EC54D71898DD3600EA1765 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		83EC54D91898DD3600EA1765 /* ForgetMeNotTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ForgetMeNotTests.m; sourceTree = "<group>"; };
+		83EC54E61898E05E00EA1765 /* RWTAddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTAddItemViewController.h; sourceTree = "<group>"; };
+		83EC54E71898E05E00EA1765 /* RWTAddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTAddItemViewController.m; sourceTree = "<group>"; };
+		83EC54E91898E13900EA1765 /* RWTItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWTItem.h; sourceTree = "<group>"; };
+		83EC54EA1898E13900EA1765 /* RWTItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWTItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,13 +121,19 @@
 		83EC54B41898DD3600EA1765 /* ForgetMeNot */ = {
 			isa = PBXGroup;
 			children = (
+				83EC54C61898DD3600EA1765 /* Images.xcassets */,
+				83EC54C01898DD3600EA1765 /* Main.storyboard */,
+				83EC54E61898E05E00EA1765 /* RWTAddItemViewController.h */,
+				83EC54E71898E05E00EA1765 /* RWTAddItemViewController.m */,
 				83EC54BD1898DD3600EA1765 /* RWTAppDelegate.h */,
 				83EC54BE1898DD3600EA1765 /* RWTAppDelegate.m */,
-				83EC54C01898DD3600EA1765 /* Main.storyboard */,
-				83EC54C31898DD3600EA1765 /* RWTViewController.h */,
-				83EC54C41898DD3600EA1765 /* RWTViewController.m */,
-				83EC54C61898DD3600EA1765 /* Images.xcassets */,
+				83EC54E91898E13900EA1765 /* RWTItem.h */,
+				83EC54EA1898E13900EA1765 /* RWTItem.m */,
+				83EC54C31898DD3600EA1765 /* RWTItemsViewController.h */,
+				83EC54C41898DD3600EA1765 /* RWTItemsViewController.m */,
 				83EC54B51898DD3600EA1765 /* Supporting Files */,
+				8391CE4C189A4D4F0072A2D3 /* RWTItemCell.h */,
+				8391CE4D189A4D4F0072A2D3 /* RWTItemCell.m */,
 			);
 			path = ForgetMeNot;
 			sourceTree = "<group>";
@@ -250,7 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83EC54C51898DD3600EA1765 /* RWTViewController.m in Sources */,
+				8391CE4E189A4D4F0072A2D3 /* RWTItemCell.m in Sources */,
+				83EC54C51898DD3600EA1765 /* RWTItemsViewController.m in Sources */,
+				83EC54E81898E05E00EA1765 /* RWTAddItemViewController.m in Sources */,
+				83EC54EB1898E13900EA1765 /* RWTItem.m in Sources */,
 				83EC54BF1898DD3600EA1765 /* RWTAppDelegate.m in Sources */,
 				83EC54BB1898DD3600EA1765 /* main.m in Sources */,
 			);
@@ -461,6 +479,7 @@
 				83EC54DF1898DD3600EA1765 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83EC54E01898DD3600EA1765 /* Build configuration list for PBXNativeTarget "ForgetMeNotTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +488,7 @@
 				83EC54E21898DD3600EA1765 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

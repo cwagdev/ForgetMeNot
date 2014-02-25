@@ -1,5 +1,5 @@
 //
-//  RWTViewController.h
+//  RWTItemsViewController.h
 //  ForgetMeNot
 //
 //  Created by Chris Wagner on 1/28/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RWTViewController : UIViewController
+@interface RWTItemsViewController : UIViewController
 
 @end
