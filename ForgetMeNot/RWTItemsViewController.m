@@ -13,14 +13,10 @@
 
 static NSString * const kRWTStoredItemsKey = @"storedItems";
 
-@import CoreLocation;
-
-@interface RWTItemsViewController () <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate>
+@interface RWTItemsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *itemsTableView;
 @property (strong, nonatomic) NSMutableArray *items;
-
-@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -28,8 +24,6 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
 
     [self loadItems];
 }
@@ -45,7 +39,6 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
             [self.itemsTableView insertRowsAtIndexPaths:@[newIndexPath]
                                        withRowAnimation:UITableViewRowAnimationAutomatic];
             [self.itemsTableView endUpdates];
-            [self startMonitoringItem:newItem];
             [self persistItems];
         }];
     }
@@ -58,7 +51,6 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
     if (storedItems) {
         for (NSData *itemData in storedItems) {
             RWTItem *item = [NSKeyedUnarchiver unarchiveObjectWithData:itemData];
-            [self startMonitoringItem:item];
             [self.items addObject:item];
         }
     }
@@ -73,29 +65,6 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
     [[NSUserDefaults standardUserDefaults] setObject:itemsDataArray forKey:kRWTStoredItemsKey];
 }
 
-- (CLBeaconRegion *)beaconRegionWithItem:(RWTItem *)item {
-    CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:item.uuid
-                                                                           major:item.majorValue
-                                                                           minor:item.minorValue
-                                                                      identifier:item.name];
-    beaconRegion.notifyOnEntry = YES;
-    beaconRegion.notifyOnExit = YES;
-    beaconRegion.notifyEntryStateOnDisplay = YES;
-    
-    return beaconRegion;
-}
-
-- (void)startMonitoringItem:(RWTItem *)item {
-    CLBeaconRegion *beaconRegion = [self beaconRegionWithItem:item];
-    [self.locationManager startMonitoringForRegion:beaconRegion];
-    [self.locationManager startRangingBeaconsInRegion:beaconRegion];
-}
-
-- (void)stopMonitoringItem:(RWTItem *)item {
-    CLBeaconRegion *beaconRegion = [self beaconRegionWithItem:item];
-    [self.locationManager stopMonitoringForRegion:beaconRegion];
-    [self.locationManager stopRangingBeaconsInRegion:beaconRegion];
-}
 
 #pragma mark - UITableViewDataSource 
 
@@ -117,9 +86,6 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        RWTItem *itemToRemove = [self.items objectAtIndex:indexPath.row];
-        [self stopMonitoringItem:itemToRemove];
-
         [tableView beginUpdates];
         [self.items removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -136,30 +102,6 @@ static NSString * const kRWTStoredItemsKey = @"storedItems";
     NSString *detailMessage = [NSString stringWithFormat:@"UUID: %@\nMajor: %d\nMinor: %d", item.uuid.UUIDString, item.majorValue, item.minorValue];
     UIAlertView *detailAlert = [[UIAlertView alloc] initWithTitle:@"Details" message:detailMessage delegate:nil cancelButtonTitle:@"Close" otherButtonTitles:nil];
     [detailAlert show];
-}
-
-
-#pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
-    NSLog(@"Failed monitoring region: %@", error);
-}
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"Location manager failed: %@", error);
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-        didRangeBeacons:(NSArray *)beacons
-               inRegion:(CLBeaconRegion *)region
-{
-    for (CLBeacon *beacon in beacons) {
-        for (RWTItem *item in self.items) {
-            if ([item isEqualToCLBeacon:beacon]) {
-                item.lastSeenBeacon = beacon;
-            }
-        }
-    }
 }
 
 @end

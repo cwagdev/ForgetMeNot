@@ -8,11 +8,7 @@
 
 #import "RWTAppDelegate.h"
 
-@import CoreLocation;
-
-@interface RWTAppDelegate () <CLLocationManagerDelegate>
-
-@property (strong, nonatomic) CLLocationManager *locationManager;
+@interface RWTAppDelegate ()
 
 @end
 
@@ -21,8 +17,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
 
     return YES;
 }
@@ -54,36 +48,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-#pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region {
-    NSLog(@"Determined state for region: %@", region);
-}
-
-- (void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
-    NSLog(@"Did exit region: %@", region);
-    if ([region isKindOfClass:[CLBeaconRegion class]]) {
-        UILocalNotification *notification = [[UILocalNotification alloc] init];
-        notification.alertBody = @"Where's my bacon!?";
-        notification.soundName = @"Default";
-        notification.repeatCalendar = [NSCalendar currentCalendar];
-        notification.repeatInterval = NSMinuteCalendarUnit;
-        notification.fireDate = [NSDate date];
-        [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
-    if ([region isKindOfClass:[CLBeaconRegion class]]) {
-        UILocalNotification *notification = [[UILocalNotification alloc] init];
-        notification.alertBody = @"Oh, phew... There it is!";
-        notification.soundName = @"Default";
-        [[UIApplication sharedApplication] cancelAllLocalNotifications];
-        
-        [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-    }
 }
 
 @end
