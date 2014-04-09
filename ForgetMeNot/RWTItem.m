@@ -17,8 +17,8 @@ static NSString * const kRWTItemMinorValueKey = @"minor";
 
 - (instancetype)initWithName:(NSString *)name
                         uuid:(NSUUID *)uuid
-                       major:(uint16_t)major
-                       minor:(uint16_t)minor
+                       major:(CLBeaconMajorValue)major
+                       minor:(CLBeaconMinorValue)minor
 {
     self = [super init];
     if (!self) {
@@ -54,6 +54,17 @@ static NSString * const kRWTItemMinorValueKey = @"minor";
     [aCoder encodeObject:self.uuid forKey:kRWTItemUUIDKey];
     [aCoder encodeObject:[NSNumber numberWithUnsignedInteger:self.majorValue] forKey:kRWTItemMajorValueKey];
     [aCoder encodeObject:[NSNumber numberWithUnsignedInteger:self.minorValue] forKey:kRWTItemMinorValueKey];
+}
+
+- (BOOL)isEqualToCLBeacon:(CLBeacon *)beacon {
+    if ([[beacon.proximityUUID UUIDString] isEqualToString:[self.uuid UUIDString]] &&
+        [beacon.major isEqual: @(self.majorValue)] &&
+        [beacon.minor isEqual: @(self.minorValue)])
+    {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const kRWTStoredItemsKey;
+
 @interface RWTItemsViewController : UIViewController
 
 @end
